@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Thems Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --coral: #F47C6C;
+    --violet: #7C6CC4;
+    --cream: #FFFBF7;
+    --blush: #FDE8E4;
+    --ink: #2A2435;
+    --mid: #6B6475;
+    --soft: #B0A8B5;
+    --border: rgba(42,36,53,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.75;
+  }
+
+  /* Spectrum bar */
+  .spectrum-top {
+    height: 5px;
+    background: linear-gradient(90deg,
+      #FF6B9D 0%, #FF8E53 12%, #FFD93D 25%, #6BCB77 37%,
+      #4D96FF 50%, #845EC2 63%, #FF6B9D 75%, #FF8E53 88%, #FFD93D 100%
+    );
+    background-size: 200% 100%;
+    animation: slide-spectrum 3s linear infinite;
+  }
+  @keyframes slide-spectrum {
+    from { background-position: 0 0; }
+    to   { background-position: 200% 0; }
+  }
+
+  /* NAV */
+  nav {
+    background: rgba(255,251,247,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--coral), #E8A4A0);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 14px rgba(244,124,108,0.3);
+  }
+
+  .logo-mark::before {
+    content: '';
+    position: absolute; top:-50%; left:-50%;
+    width:200%; height:200%;
+    background: conic-gradient(from 0deg, rgba(255,255,255,0.25), transparent, rgba(255,255,255,0.25));
+    animation: shimmer 3s linear infinite;
+  }
+  @keyframes shimmer { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.01em;
+  }
+
+  /* HERO BAND */
+  .page-header {
+    background: linear-gradient(135deg, var(--blush), #EEE8FC);
+    padding: 4rem 3rem 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-header .eyebrow {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--coral);
+    margin-bottom: 0.75rem;
+  }
+
+  .page-header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 0.875rem;
+  }
+
+  .page-header h1 em { font-style: italic; color: var(--coral); }
+
+  .page-header .meta {
+    font-size: 0.85rem; color: var(--mid);
+  }
+
+  /* CONTENT */
+  .content-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .toc-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem; font-weight: 700;
+    margin-bottom: 1rem; color: var(--ink);
+  }
+
+  .toc ol {
+    padding-left: 1.25rem;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+
+  .toc li a {
+    font-size: 0.875rem; color: var(--mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+
+  .toc li a:hover { color: var(--coral); }
+
+  /* Sections */
+  .policy-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .policy-section:last-child { border-bottom: none; }
+
+  .policy-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.375rem; font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem; color: var(--ink);
+    display: flex; align-items: center; gap: 0.625rem;
+  }
+
+  .section-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blush); color: var(--coral);
+    font-size: 0.75rem; font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .policy-section p {
+    font-size: 0.95rem; color: var(--mid);
+    margin-bottom: 1rem; line-height: 1.8;
+  }
+
+  .policy-section p:last-child { margin-bottom: 0; }
+
+  .policy-section ul {
+    padding-left: 1.25rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .policy-section ul li {
+    font-size: 0.95rem; color: var(--mid); line-height: 1.7;
+  }
+
+  .policy-section ul li::marker { color: var(--coral); }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* Highlight box */
+  .highlight-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+    font-size: 0.9rem; color: var(--mid); line-height: 1.75;
+  }
+
+  /* Contact card */
+  .contact-card {
+    background: linear-gradient(135deg, var(--blush), #EEE8FC);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+
+  .contact-card p { color: var(--mid); font-size: 0.9rem; margin-bottom: 0.875rem; }
+
+  .contact-card a {
+    display: inline-block;
+    background: var(--coral); color: white;
+    padding: 0.625rem 1.75rem; border-radius: 100px;
+    font-weight: 600; font-size: 0.9rem; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(244,124,108,0.3);
+    transition: all 0.2s;
+  }
+
+  .contact-card a:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(244,124,108,0.4); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.4);
+    padding: 2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-logo {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 700;
+    color: white;
+  }
+
+  .footer-dot {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--coral);
+  }
+
+  footer p { font-size: 0.75rem; }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+  footer a:hover { color: white; }
+  .footer-links { display: flex; gap: 1.5rem; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    .page-header { padding: 3rem 1.5rem 2.5rem; }
+    .content-wrap { padding: 2.5rem 1.5rem 4rem; }
+    footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="spectrum-top"></div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="logo-mark">🌸</div>
+    <span class="logo-text">thems</span>
+  </a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Legal</div>
+  <h1>Privacy <em>Policy</em></h1>
+  <p class="meta">Last updated: June 1, 2025 &nbsp;·&nbsp; Thems Health, Inc.</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#info-we-collect">Information We Collect</a></li>
+      <li><a href="#how-we-use">How We Use Your Information</a></li>
+      <li><a href="#sharing">How We Share Your Information</a></li>
+      <li><a href="#data-retention">Data Retention</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#cookies">Cookies & Tracking</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="highlight-box">
+    <strong>The short version:</strong> We collect only what we need, we never sell your data, and we take extra care with health-related information. Your privacy — and your identity — are safe with us.
+  </div>
+
+  <div class="policy-section" id="info-we-collect">
+    <h2><span class="section-num">1</span> Information We Collect</h2>
+    <p>We collect information you provide directly to us, including:</p>
+    <ul>
+      <li><strong>Contact information</strong> — such as your email address when you join our waitlist.</li>
+      <li><strong>Health information</strong> — such as medical history, current medications, and relevant health conditions, collected when you complete our intake forms prior to consultation.</li>
+      <li><strong>Identity information</strong> — including your preferred name, pronouns, and gender identity, which you may optionally provide to help us deliver affirming care.</li>
+      <li><strong>Payment information</strong> — billing details processed securely through our third-party payment processor. We do not store your full card number.</li>
+      <li><strong>Usage information</strong> — how you interact with our website, collected automatically via cookies and similar technologies.</li>
+    </ul>
+  </div>
+
+  <div class="policy-section" id="how-we-use">
+    <h2><span class="section-num">2</span> How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Operate and deliver our telehealth services, including matching you with a clinician and processing prescriptions.</li>
+      <li>Communicate with you about your care, including appointment reminders, prescription updates, and health check-ins.</li>
+      <li>Send you marketing and promotional communications, such as our launch announcement and special offers — only if you have opted in.</li>
+      <li>Improve and personalize our platform and services.</li>
+      <li>Comply with applicable legal and regulatory obligations, including healthcare laws.</li>
+    </ul>
+    <p>We will never use your gender identity, sexual orientation, or health information for advertising purposes or share it with advertisers.</p>
+  </div>
+
+  <div class="policy-section" id="sharing">
+    <h2><span class="section-num">3</span> How We Share Your Information</h2>
+    <p>We do not sell your personal information. We may share your information only in the following limited circumstances:</p>
+    <ul>
+      <li><strong>Healthcare providers</strong> — licensed clinicians and pharmacies involved in your care, as necessary to deliver your treatment.</li>
+      <li><strong>Service providers</strong> — trusted vendors who help us operate our platform (e.g., email delivery, payment processing, cloud storage), under strict data processing agreements.</li>
+      <li><strong>Legal requirements</strong> — if required to do so by law, court order, or governmental authority.</li>
+      <li><strong>Business transfers</strong> — in the event of a merger, acquisition, or sale of assets, your information may be transferred. We will notify you before your data becomes subject to a different privacy policy.</li>
+    </ul>
+  </div>
+
+  <div class="policy-section" id="data-retention">
+    <h2><span class="section-num">4</span> Data Retention</h2>
+    <p>We retain your personal information for as long as necessary to provide our services and comply with our legal obligations. Waitlist email addresses are retained until you unsubscribe or request deletion. Health records are retained in accordance with applicable state and federal healthcare regulations, typically a minimum of seven years.</p>
+    <p>You may request deletion of your data at any time by contacting us at <a href="mailto:hello@trythems.com" style="color: var(--coral);">hello@trythems.com</a>. Note that some information may be retained where required by law.</p>
+  </div>
+
+  <div class="policy-section" id="your-rights">
+    <h2><span class="section-num">5</span> Your Rights</h2>
+    <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+    <ul>
+      <li><strong>Access</strong> — the right to request a copy of the personal information we hold about you.</li>
+      <li><strong>Correction</strong> — the right to request that we correct inaccurate or incomplete information.</li>
+      <li><strong>Deletion</strong> — the right to request that we delete your personal information.</li>
+      <li><strong>Opt-out</strong> — the right to opt out of marketing communications at any time by clicking "unsubscribe" in any email or contacting us directly.</li>
+      <li><strong>Portability</strong> — the right to receive your personal information in a structured, machine-readable format.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at <a href="mailto:hello@trythems.com" style="color: var(--coral);">hello@trythems.com</a>.</p>
+  </div>
+
+  <div class="policy-section" id="security">
+    <h2><span class="section-num">6</span> Security</h2>
+    <p>We take the security of your information seriously, particularly given the sensitive nature of health and identity data. We use industry-standard measures including encryption in transit (TLS) and at rest, access controls, and regular security reviews.</p>
+    <p>However, no method of transmission or storage is completely secure. While we strive to protect your information, we cannot guarantee absolute security. If you believe your account has been compromised, please contact us immediately.</p>
+  </div>
+
+  <div class="policy-section" id="cookies">
+    <h2><span class="section-num">7</span> Cookies & Tracking</h2>
+    <p>We use cookies and similar technologies to operate our website and understand how visitors use it. These include:</p>
+    <ul>
+      <li><strong>Essential cookies</strong> — required for the website to function properly.</li>
+      <li><strong>Analytics cookies</strong> — help us understand traffic and usage patterns so we can improve our service. We use privacy-respecting analytics tools that do not track you across other websites.</li>
+    </ul>
+    <p>We do not use third-party advertising cookies or behavioral tracking. You can disable cookies in your browser settings, though this may affect some site functionality.</p>
+  </div>
+
+  <div class="policy-section" id="children">
+    <h2><span class="section-num">8</span> Children's Privacy</h2>
+    <p>Our services are intended for individuals 18 years of age or older. We do not knowingly collect personal information from anyone under 18. If you believe we have inadvertently collected information from a minor, please contact us immediately and we will delete it promptly.</p>
+  </div>
+
+  <div class="policy-section" id="changes">
+    <h2><span class="section-num">9</span> Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you by email (if you are on our waitlist or are a member) and update the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+    <p>Your continued use of our services after any changes constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <div class="policy-section" id="contact">
+    <h2><span class="section-num">10</span> Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your data, please don't hesitate to reach out.</p>
+    <div class="contact-card">
+      <p>Thems Health, Inc. &nbsp;·&nbsp; hello@trythems.com</p>
+      <a href="mailto:hello@trythems.com">Email Us</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-dot"></div>
+    thems
+  </div>
+  <p>© 2025 Thems Health, Inc. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/">← Back to Home</a>
+    <a href="mailto:hello@trythems.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

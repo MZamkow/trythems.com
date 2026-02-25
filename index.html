@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thems Health — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blush: #FDE8E4;
+    --rose: #E8A4A0;
+    --coral: #F47C6C;
+    --sky: #D4EBFA;
+    --periwinkle: #7B9FDB;
+    --lavender: #E8E4F8;
+    --violet: #7C6CC4;
+    --mint: #D4F0E8;
+    --sage: #6AAB8E;
+    --cream: #FFFBF7;
+    --ink: #2A2435;
+    --mid: #6B6475;
+    --soft: #B0A8B5;
+    --peach: #FFE4D4;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND BLOBS ── */
+  .blob {
+    position: fixed; border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    pointer-events: none; z-index: 0;
+    animation: morph 9s ease-in-out infinite;
+  }
+  @keyframes morph {
+    0%,100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+    25%      { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
+    50%      { border-radius: 70% 30% 40% 60% / 40% 60% 50% 50%; }
+    75%      { border-radius: 30% 70% 60% 40% / 50% 40% 70% 30%; }
+  }
+  .blob-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(253,232,228,0.9), rgba(255,228,212,0.5), transparent);
+    top: -150px; right: -150px; animation-delay: 0s;
+  }
+  .blob-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(212,235,250,0.75), rgba(232,228,248,0.5), transparent);
+    bottom: -100px; left: -100px; animation-delay: -3s;
+  }
+  .blob-3 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(212,240,232,0.6), transparent);
+    top: 50%; left: 55%; animation-delay: -6s;
+  }
+
+  /* Floating dots */
+  .dot {
+    position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+    animation: floatUp ease-in-out infinite;
+  }
+  @keyframes floatUp {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-18px); }
+  }
+  .d1 { width:12px; height:12px; background:var(--coral);    opacity:.5; top:15%; left:8%;  animation-duration:6s; }
+  .d2 { width: 8px; height: 8px;  background:var(--periwinkle); opacity:.45; top:72%; left:12%; animation-duration:8s; animation-delay:1.5s; }
+  .d3 { width:14px; height:14px; background:var(--sage);    opacity:.4; top:28%; right:9%; animation-duration:7s; animation-delay:.8s; }
+  .d4 { width:10px; height:10px; background:var(--violet);  opacity:.45; top:65%; right:7%; animation-duration:5s; animation-delay:2.2s; }
+  .d5 { width: 7px; height: 7px;  background:var(--rose);   opacity:.5; top:45%; left:5%;  animation-duration:9s; animation-delay:.3s; }
+  .d6 { width:11px; height:11px; background:var(--periwinkle); opacity:.35; bottom:20%; right:14%; animation-duration:7.5s; animation-delay:1s; }
+
+  /* ── SPECTRUM BAR ── */
+  .spectrum-top {
+    position: fixed; top: 0; left: 0; right: 0; height: 5px;
+    background: linear-gradient(90deg,
+      #FF6B9D 0%, #FF8E53 12%, #FFD93D 25%, #6BCB77 37%,
+      #4D96FF 50%, #845EC2 63%, #FF6B9D 75%, #FF8E53 88%, #FFD93D 100%
+    );
+    background-size: 200% 100%;
+    animation: slide-spectrum 3s linear infinite;
+    z-index: 200;
+  }
+  @keyframes slide-spectrum {
+    from { background-position: 0 0; }
+    to   { background-position: 200% 0; }
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+  }
+
+  /* ── LOGO ── */
+  .logo {
+    display: flex; align-items: center; gap: 0.625rem;
+    margin-bottom: 3rem;
+    animation: fadeUp .5s ease both;
+  }
+  .logo-mark {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--coral), var(--rose));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+    position: relative; overflow: hidden;
+    box-shadow: 0 6px 20px rgba(244,124,108,0.35);
+  }
+  .logo-mark::before {
+    content: '';
+    position: absolute; top:-50%; left:-50%;
+    width:200%; height:200%;
+    background: conic-gradient(from 0deg, rgba(255,255,255,0.25), transparent, rgba(255,255,255,0.25));
+    animation: shimmer 3s linear infinite;
+  }
+  @keyframes shimmer { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: white; border: 1px solid rgba(244,124,108,0.2);
+    border-radius: 100px; padding: 0.375rem 1.125rem;
+    font-size: 0.8rem; font-weight: 600; color: var(--coral);
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    animation: fadeUp .5s ease .1s both;
+  }
+  .badge-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--coral);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  /* ── HEADLINE ── */
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    font-weight: 700; line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 1.25rem;
+    animation: fadeUp .5s ease .15s both;
+  }
+  h1 em   { font-style: italic; color: var(--coral); }
+  h1 .lav { color: var(--violet); }
+
+  .subhead {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.75; color: var(--mid);
+    max-width: 560px; margin: 0 auto 2.75rem;
+    animation: fadeUp .5s ease .22s both;
+  }
+
+  /* ── EMAIL FORM ── */
+  .form-wrap {
+    width: 100%; max-width: 520px;
+    animation: fadeUp .5s ease .3s both;
+  }
+
+  .email-row {
+    display: flex; gap: 0;
+    background: white;
+    border: 2px solid rgba(42,36,53,0.1);
+    border-radius: 100px;
+    padding: 5px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .email-row:focus-within {
+    border-color: var(--coral);
+    box-shadow: 0 8px 32px rgba(244,124,108,0.18);
+  }
+
+  .email-input {
+    flex: 1; border: none; outline: none; background: transparent;
+    padding: .75rem 1.25rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .95rem; color: var(--ink);
+    min-width: 0;
+  }
+  .email-input::placeholder { color: var(--soft); }
+
+  .btn-submit {
+    background: var(--coral); color: white;
+    border: none; padding: .75rem 1.75rem; border-radius: 100px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .9rem; font-weight: 700;
+    cursor: pointer; white-space: nowrap;
+    transition: all .25s;
+    box-shadow: 0 4px 16px rgba(244,124,108,0.35);
+  }
+  .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(244,124,108,0.45); }
+  .btn-submit:active { transform: translateY(0); }
+
+  .form-note {
+    font-size: .78rem; color: var(--soft); margin-top: .875rem;
+    animation: fadeUp .5s ease .36s both;
+  }
+  .form-note a { color: var(--mid); text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color .2s; }
+  .form-note a:hover { text-decoration-color: var(--mid); }
+
+  /* ── SUCCESS STATE ── */
+  .success-msg {
+    display: none;
+    flex-direction: column; align-items: center; gap: .75rem;
+    animation: popIn .4s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes popIn {
+    from { opacity:0; transform:scale(.8); }
+    to   { opacity:1; transform:scale(1); }
+  }
+  .success-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage), #4A9A72);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 24px rgba(106,171,142,0.35);
+  }
+  .success-msg p {
+    font-size: 1rem; font-weight: 600; color: var(--ink);
+  }
+  .success-msg span {
+    font-size: .85rem; color: var(--mid);
+  }
+
+  /* ── CHIPS ── */
+  .chips {
+    display: flex; flex-wrap: wrap; gap: .625rem;
+    justify-content: center; margin-top: 3rem;
+    max-width: 560px;
+    animation: fadeUp .5s ease .42s both;
+  }
+  .chip {
+    display: flex; align-items: center; gap: .4rem;
+    background: white; border: 1px solid rgba(42,36,53,0.08);
+    border-radius: 100px; padding: .375rem .875rem;
+    font-size: .78rem; font-weight: 500; color: var(--mid);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .chip .c-icon { font-size: .85rem; }
+
+  /* ── PREVIEW CARDS ── */
+  .preview-row {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 3.5rem; max-width: 720px;
+    animation: fadeUp .5s ease .5s both;
+  }
+  .preview-card {
+    background: white; border-radius: 14px;
+    border: 1px solid rgba(42,36,53,0.07);
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    text-align: left; min-width: 190px; flex: 1; max-width: 220px;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .preview-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.09); }
+  .card-top { display: flex; align-items: center; gap: .5rem; margin-bottom: .625rem; }
+  .card-emoji-sm { font-size: 1.1rem; }
+  .card-label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+  .card-body { font-family: 'Fraunces', serif; font-size: .95rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
+  .card-sub { font-size: .75rem; color: var(--mid); margin-top: .25rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative; z-index: 1;
+    padding: 1.5rem 2rem;
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(42,36,53,0.06);
+  }
+  footer p { font-size: .75rem; color: var(--soft); }
+  footer a { font-size: .75rem; color: var(--soft); text-decoration: none; transition: color .2s; }
+  footer a:hover { color: var(--coral); }
+
+  /* ── ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 580px) {
+    .email-row { flex-direction: column; border-radius: 16px; padding: .5rem; }
+    .btn-submit { border-radius: 12px; padding: .875rem; width: 100%; }
+    .preview-card { max-width: 100%; }
+    .preview-row { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Spectrum bar -->
+<div class="spectrum-top"></div>
+
+<!-- Blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- Floating dots -->
+<div class="dot d1"></div>
+<div class="dot d2"></div>
+<div class="dot d3"></div>
+<div class="dot d4"></div>
+<div class="dot d5"></div>
+<div class="dot d6"></div>
+
+<main>
+
+  <!-- Logo -->
+  <div class="logo">
+    <div class="logo-mark">🌸</div>
+    <span class="logo-text">thems</span>
+  </div>
+
+  <!-- Badge -->
+  <div class="badge">
+    <div class="badge-dot"></div>
+    Launching Soon · GLP-1 for the LGBTQIA+ Community
+  </div>
+
+  <!-- Headline -->
+  <h1>
+    Healthcare that<br>
+    <em>loves</em> every&nbsp;<span class="lav">body.</span>
+  </h1>
+
+  <!-- Subhead -->
+  <p class="subhead">
+    Thems is building the first GLP-1 telehealth platform designed specifically for the LGBTQIA+ community — with affirming providers, HRT-aware dosing, and care that sees all of you. Join the waitlist and get <strong style="color: var(--coral);">$50 off your first month</strong> when we launch.
+  </p>
+
+  <!-- Email capture -->
+  <div class="form-wrap">
+    <div id="form-area">
+      <div class="email-row">
+        <input
+          id="email-input"
+          class="email-input"
+          type="email"
+          placeholder="your@email.com"
+          aria-label="Email address"
+        />
+        <button class="btn-submit" onclick="handleSubmit()">Notify Me 🌸</button>
+      </div>
+      <p class="form-note">
+        No spam, ever. Just a heads-up when we go live. &nbsp;·&nbsp;
+        <a href="/privacy">Privacy Policy</a>
+      </p>
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      <div class="success-icon">✓</div>
+      <p>You're on the list!</p>
+      <span>We'll reach out as soon as Thems is live. Thank you for your support 💜</span>
+    </div>
+  </div>
+
+  <!-- Feature chips -->
+  <div class="chips">
+    <div class="chip"><span class="c-icon">🏳️‍🌈</span> LGBTQIA+ affirming providers</div>
+    <div class="chip"><span class="c-icon">💊</span> Semaglutide &amp; tirzepatide</div>
+    <div class="chip"><span class="c-icon">⚗️</span> HRT-aware dosing</div>
+    <div class="chip"><span class="c-icon">📦</span> Discreet delivery</div>
+    <div class="chip"><span class="c-icon">💜</span> Pronouns-first care</div>
+  </div>
+
+  <!-- Preview cards -->
+  <div class="preview-row">
+    <div class="preview-card">
+      <div class="card-top">
+        <span class="card-emoji-sm">🩺</span>
+        <span class="card-label">Rapid Access</span>
+      </div>
+      <div class="card-body">Rx in 48 hours</div>
+      <div class="card-sub">From a trained, affirming provider</div>
+    </div>
+    <div class="preview-card">
+      <div class="card-top">
+        <span class="card-emoji-sm">🌸</span>
+        <span class="card-label">Starting at</span>
+      </div>
+      <div class="card-body">$149 / month</div>
+      <div class="card-sub">Medication included, no insurance needed</div>
+    </div>
+    <div class="preview-card">
+      <div class="card-top">
+        <span class="card-emoji-sm">⚗️</span>
+        <span class="card-label">Real Medicine</span>
+      </div>
+      <div class="card-body">FDA-approved GLP-1s</div>
+      <div class="card-sub">Semaglutide &amp; tirzepatide from licensed U.S. pharmacies</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 Thems Health, Inc.</p>
+  <a href="/privacy">Privacy Policy</a>
+  <a href="mailto:hello@trythems.com">Contact Us</a>
+</footer>
+
+<script>
+  // ─────────────────────────────────────────────────────────────
+  // STEP 1: Paste your Google Apps Script Web App URL here
+  // (see setup instructions in the file comments below)
+  // ─────────────────────────────────────────────────────────────
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby3Sr4vBDC8IhPl3bWbgrU9I2fqgg7RzKB_zN1u2TtCNnLox_hMkeA1QzP6ga_obYE/exec';
+
+  async function handleSubmit() {
+    const input = document.getElementById('email-input');
+    const email = input.value.trim();
+    const btn = document.querySelector('.btn-submit');
+
+    // Basic validation
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      input.style.outline = '2px solid #F47C6C';
+      input.focus();
+      setTimeout(() => input.style.outline = '', 1500);
+      return;
+    }
+
+    // Loading state
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // required for Apps Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          timestamp: new Date().toISOString(),
+          source: window.location.href
+        })
+      });
+
+      // Show success (no-cors means we can't read the response, but if no error was thrown it worked)
+      document.getElementById('form-area').style.display = 'none';
+      const success = document.getElementById('success-msg');
+      success.style.display = 'flex';
+
+    } catch (err) {
+      // Show error state
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.style.background = '#e05c4a';
+      setTimeout(() => {
+        btn.textContent = 'Notify Me 🌸';
+        btn.style.background = '';
+      }, 3000);
+      console.error('Submission error:', err);
+    }
+  }
+
+  // Allow Enter key to submit
+  document.getElementById('email-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSubmit();
+  });
+</script>
+
+<!--
+════════════════════════════════════════════════════════════════
+  GOOGLE SHEETS SETUP — do this once, takes ~2 minutes
+════════════════════════════════════════════════════════════════
+
+  1. Create a new Google Sheet at sheets.google.com
+     - Name the first sheet "Waitlist"
+     - Add headers in row 1: Email | Timestamp | Source
+
+  2. In the sheet, click Extensions → Apps Script
+
+  3. Delete any existing code and paste this:
+
+  ─────────────────────────────────────────────────────────────
+  function doPost(e) {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet()
+                    .getSheetByName('Waitlist');
+    const data  = JSON.parse(e.postData.contents);
+
+    sheet.appendRow([
+      data.email,
+      data.timestamp,
+      data.source
+    ]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'ok' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  ─────────────────────────────────────────────────────────────
+
+  4. Click Deploy → New Deployment
+     - Type: Web app
+     - Execute as: Me
+     - Who has access: Anyone
+     - Click Deploy and authorize when prompted
+
+  5. Copy the Web App URL and paste it into APPS_SCRIPT_URL above
+
+  That's it — emails will now appear in your Google Sheet in real time.
+════════════════════════════════════════════════════════════════
+-->
+
+</body>
+</html>
