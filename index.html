@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thems Health — Coming Soon</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FR319Z4CS1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-FR319Z4CS1");
+  </script>
+  <!-- End Google Analytics 4 -->
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -476,6 +486,9 @@
       // Track lead conversion in Meta Pixel
       fbq('track', 'Lead');
 
+      // Track sign-up conversion in GA4
+      gtag('event', 'sign_up', { method: 'waitlist' });
+
       // Show success (no-cors means we can't read the response, but if no error was thrown it worked)
       document.getElementById('form-area').style.display = 'none';
       const success = document.getElementById('success-msg');
@@ -541,4 +554,8 @@
   5. Copy the Web App URL and paste it into APPS_SCRIPT_URL above
 
   That's it — emails will now appear in your Google Sheet in real time.
-═════════════════════�
+════════════════════════════════════════════════════════════════
+-->
+
+</body>
+</html>
